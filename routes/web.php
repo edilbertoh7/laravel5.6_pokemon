@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/prueba/{name}','PruebasController@prueba');
+Route::resource('trainers','TrainerController');
+//Route::post('/trainers','TrainerController@store');
+
