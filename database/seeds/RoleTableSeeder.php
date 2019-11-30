@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use edy\Role;
 class RoleTableSeeder extends Seeder
 {
     /**
@@ -11,6 +11,14 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $role = new Role();
+        $role->name = "admin";
+        $role->description = "administrador";
+        $role->save();
+
+        $role = new Role();
+        $role->name = "user";
+        $role->description = "user";
+        $role->save();
     }
 }
