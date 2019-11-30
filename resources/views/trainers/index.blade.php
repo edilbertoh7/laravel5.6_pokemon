@@ -2,6 +2,7 @@
 @extends('layouts.app')
  @section('title','Trainers')
  	 @section('content')
+ 	@include('trainers.fragments.status')
  	 <div class="row">
  	 	@foreach ($trainers as $trainer)
  	 	<div class="col-sm">

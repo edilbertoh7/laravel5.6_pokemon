@@ -3,7 +3,7 @@
 namespace edy\Http\Controllers;
 use edy\Trainer;
 use Illuminate\Http\Request;
-
+use edy\Http\Requests\StoreTrainerRequest;
 class TrainerController extends Controller
 {
     /**
@@ -33,13 +33,14 @@ class TrainerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $validateData=$request->validate([
-            'name'=>'required|max:10',
-            'avatar'=>'required|image',
-            'slug'=>'required'
-        ]);
+    public function store(StoreTrainerRequest $request)
+    {/* en este caso las reglas de validacion se realizaran en StoreTrainerRequest
+     pero es posible usarlas desde este controlador con las siguientes lineas comentadas*/
+        // $validateData=$request->validate([
+        //     'name'=>'required|max:10',
+        //     'avatar'=>'required|image',
+        //     'slug'=>'required'
+        // ]);
         //validadcion para agregar la imagen del entrenador
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
@@ -52,7 +53,8 @@ class TrainerController extends Controller
         $trainer->slug = $request->input('slug');
         $trainer->avatar = $name;
         $trainer->save(); 
-        return 'saved';
+        return redirect()->route('trainers.index')
+        ->with('status','Se ha agregado un nuevo entrenador');
         
     }
 
@@ -91,7 +93,7 @@ class TrainerController extends Controller
     public function update(Request $request, Trainer $trainer)
     {
         $trainer->fill($request->except('avatar'));
-
+        $nombre=$trainer->name;
          if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
             $name = time().$file->getClientOriginalName();
@@ -101,7 +103,9 @@ class TrainerController extends Controller
         }
 
         $trainer->save();
-        return 'los datos se actualizaron correctamente';
+        return redirect()->route('trainers.show',[$trainer])
+        ->with('info','Se han actualizado los datos del entrenador'.' '.$nombre);
+        // return 'los datos se actualizaron correctamente';
          //return redirect()->route('trainers.index');
 
     }
@@ -112,8 +116,18 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Trainer $trainer)
+    /*se localiza el archivo que se va a borrar*/
+    {   $file_path = public_path().'/images/'.$trainer->avatar;
+    $nombre=$trainer->name;
+   
+    /* luego se accede al metodo delete del alias \File y se le
+    pasa como argumento la variable file_path que contiene la ruta y nombre del
+    archivo a eliminar*/
+        \File::delete($file_path);
+
+        $trainer->delete();
+        return redirect()->route('trainers.index')
+        ->with('status','Se ha eliminado el entrenador  '.' '.$nombre);
     }
 }

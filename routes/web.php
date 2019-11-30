@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::resource('trainers','TrainerController');
 //Route::post('/trainers','TrainerController@store');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
