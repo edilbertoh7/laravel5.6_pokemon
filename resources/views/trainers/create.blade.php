@@ -1,8 +1,24 @@
 @extends('layouts.app')
 
 @section('title','Trainers Create')
-	{{-- expr --}}
 	@section('content')
+@if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+	@foreach ($errors->all() as $error)
+	<li> {{ $error }} </li>
+	@endforeach
+</ul>
+</div>
+@endif
+		{!! form::open(['route'=>'trainers.store','method'=>'POST','files'=>'true']) !!}
+
+	@include('trainers.form')
+
+	{!! form::submit('GUARDAR',['class'=>'btn btn-primary']) !!}
+	{!! form::close() !!}
+
+{{-- 	formulario hecho en html
 	<form method="POST" action="/trainers" enctype="multipart/form-data">
 		@csrf
 
@@ -13,5 +29,5 @@
 			<input type="file" name="avatar" >
 		</div>
 		<button type="submit" class="btn btn-primary">GUARDAR</button>
-</form>
+</form> --}}
 @endsection
