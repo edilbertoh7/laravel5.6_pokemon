@@ -1,7 +1,7 @@
 <template>
 	<!-- la data-target="#addPokemon" hace referencia al id de el div principal
 	de CreatePokemonComponent -->
-	<button type="button" class=" btn btn-primary "
+	<button type="button" class=" btn btn-success "
 	    data-toggle="modal" data-target="#addPokemon">AGREGAR</button>
 </template>
 

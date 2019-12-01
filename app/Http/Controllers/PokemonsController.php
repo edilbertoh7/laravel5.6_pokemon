@@ -18,6 +18,7 @@ class PokemonsController extends Controller
   	return view('pokemons.index');
   }
 
+
   public function store(Trainer $trainer, Request $request)
   {
   	if ($request->ajax()) {

@@ -49840,7 +49840,7 @@ var render = function() {
   return _c(
     "button",
     {
-      staticClass: " btn btn-primary ",
+      staticClass: " btn btn-success ",
       attrs: {
         type: "button",
         "data-toggle": "modal",

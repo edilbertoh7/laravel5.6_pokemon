@@ -9,11 +9,12 @@
  		<h3> {{ $trainer->slug }} </h3>
  		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
  	 {!! form::open(['route'=>['trainers.destroy',$trainer->slug],'method'=>'DELETE']) !!}
+ 	<a class="btn btn-secondary" href="{{ route('trainers.index') }} ">inicio</a>
  	<a href="/trainers/{{ $trainer->slug }}/edit" class="btn btn-primary">Editar</a>
  	 {!! form::submit('Eliminar',['class'=> 'btn btn-danger']) !!}
- 	<modal-button></modal-button>
    <add-pokemon-trainer></add-pokemon-trainer>
-   <list-of-pokemons></list-of-pokemons>
+ 	<modal-button></modal-button>
+ 	<list-of-pokemons></list-of-pokemons>
  	 {!! form::close() !!}
  	</div>
  @endsection
