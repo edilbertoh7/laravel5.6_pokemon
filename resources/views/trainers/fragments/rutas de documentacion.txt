@@ -1,0 +1,5 @@
+https://projects.lukehaas.me/css-loaders/  =>  espiners 
+https://vuejs.org/v2/cookbook/using-axios-to-consume-apis.html  => uso de axios
+https://laravel.com/docs/5.7/frontend#writing-javascript => uso de vue en laravel
+https://laravel.com/docs/5.7/helpers#miscellaneous => uso de slug
+https://laravel.com/docs/5.7/seeding#writing-seeders  => acerca de seeders

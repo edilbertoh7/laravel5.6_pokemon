@@ -11,7 +11,9 @@
  	 {!! form::open(['route'=>['trainers.destroy',$trainer->slug],'method'=>'DELETE']) !!}
  	<a href="/trainers/{{ $trainer->slug }}/edit" class="btn btn-primary">Editar</a>
  	 {!! form::submit('Eliminar',['class'=> 'btn btn-danger']) !!}
+ 	<modal-button></modal-button>
+   <add-pokemon-trainer></add-pokemon-trainer>
+   <list-of-pokemons></list-of-pokemons>
  	 {!! form::close() !!}
- 	{{-- <a href="/trainers/{{ $trainer->slug }}/destroy" class="btn btn-danger">Eliminar</a> --}}
  	</div>
  @endsection

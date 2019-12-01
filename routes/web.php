@@ -17,6 +17,11 @@ Route::get('/', function () {
 // Route::get('/prueba/{name}','PruebasController@prueba');
 Route::resource('trainers','TrainerController');
 //Route::post('/trainers','TrainerController@store');
+//Route::resource('pokemons','PokemonsController');
+
+Route::get('trainers/{trainer}/pokemons','PokemonsController@index');
+
+Route::post('trainers/{trainer}/pokemons','PokemonsController@store');
 
 
 Auth::routes();
